@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://ksj000625.github.io/sitemap.xml
