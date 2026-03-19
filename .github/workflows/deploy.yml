@@ -83,6 +83,7 @@ jobs:
           cache: "pip" # caching pip dependencies
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@main
+        continue-on-error: true
         with:
           commitChange: false
           valueFile: "_config.yml"
