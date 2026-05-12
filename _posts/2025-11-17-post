@@ -1,0 +1,158 @@
+---
+title: Are you ready to embrace AI-driven development? (AIDD)
+categories:
+- AI
+- CS
+- Study
+feature_image: "https://velog.velcdn.com/images/playername_ltt/post/63c0047d-7c41-4508-afd0-60cd0c164156/image.png"
+---
+
+The development environment is changing faster than ever. GitHub Copilot, Cursor, Claude Code, Windsurf…  
+
+We have entered the **"Warring States Period" of AI coding tools.** For developers today, the critical question is no longer:  
+
+> "Will using AI coding tools make my foundational knowledge deteriorate?"  
+
+But rather:  
+
+> "How can I best utilize AI to fit my team and development process?"  
+
+In the past, whether or not to use AI coding tools was a point of debate. However, in the development landscape of 2025, that question is already outdated.  
+
+**The core focus now is:** **"How well can we leverage AI to create a better development cycle?"** This question is expanding into a new development paradigm beyond simple autocompletion. That paradigm is **AI-Driven Development (AIDD).** # AI Spitting Out "Spaghetti Code"  
+
+Are AI coding tools purely beneficial? A **2024 report by GitClear** revealed some quite shocking data:  
+
+> "Since the introduction of AI, code churn has increased, while code reuse has actually decreased."  
+
+Because AI makes writing code so easy, there is a stronger tendency to **"copy-paste"** rather than reuse existing code. This accelerates "Technical Debt," making long-term maintenance impossible.  
+
+* **Past:** Write 10 lines after careful thought.  
+* **Present:** AI generates 100 lines in 1 second -> Commit without verification -> A legacy time bomb.  
+
+We must start AIDD by **"distrusting the code AI writes."** Of course, AI will continue to evolve and produce more reliable code over time.  
+
+---
+
+# The End of Simple Autocomplete: What is AIDD?  
+
+The era where **Copilot v1** merely suggested the next variable name or function signature is over. Simple **'Code Snippet Generation'** is no longer referred to as AIDD.  
+
+So, what is true AIDD?  
+
+It refers to a comprehensive development methodology where **AI is utilized as a 'Thought Partner' that drives the entire development process.** ### Decisive Differences Between Simple Autocomplete and AIDD  
+
+| Category | Simple Autocomplete (Pre-2022) | AIDD (AI-Driven Development) |  
+| :--- | :--- | :--- |  
+| **Scope of Awareness** | Current file, last few lines of code | **Entire codebase** (Project structure, conventions, dependencies) |  
+| **Tasks Performed** | Predict next word/line, create simple functions | **Architectural changes**, **cross-module bug fixes**, **test code generation** |  
+| **Developer Role** | Assistant to increase typing speed | **Thought Partner** to discuss complex problem-solving |  
+
+---
+
+## Two Pillars of AIDD  
+
+AIDD demands two fundamental changes from developers.  
+
+### 1. Contextual Understanding via RAG (Retrieval-Augmented Generation)  
+
+Latest tools like Cursor use **RAG** technology to go beyond predicting the next line; they index the **entire project's file structure and team conventions.** Because of this, AI doesn't just say, "You could put `getUserInfo` here." Instead, it understands and suggests, "**Based on our team's Redux architecture, here is how you should modify the Store and Action.**" This signifies the expansion of AI's role from the realm of 'coding' to 'design and refactoring.'  
+
+---
+
+### 2. Integration of Methodologies for AI Code Reliability  
+
+AI writes code quickly, but that code isn't always accurate or robust. This is where the warning from the GitClear report applies.  
+
+Therefore, AIDD adopts the core principle: **"AI is the implementation tool, TDD is the verification tool."** The role is redefined: the developer asks the AI for "code that passes the test," and the developer reviews whether the "test code accurately reflects business requirements."  
+
+AIDD is the process of **critically utilizing AI by embedding it within development methodologies like TDD (Test-Driven Development).** # Why does TDD appear in a discussion about AI-Driven Development?  
+
+The ultimate goal of AIDD is to **create reliable software quickly and efficiently.** However, fundamental limitations arise during the AI's code generation process. At this junction, **TDD (Test-Driven Development)** becomes more than just a methodology—it becomes the **safety net and core framework** of AIDD.  
+
+---
+
+## 1. Inherent Limitations of AI Code: Uncertainty and Hallucination  
+
+LLM-based AI coding tools generate code by predicting the **'next token with the highest probability.'** The greatest risks in this process include:  
+
+* **Non-Deterministic:** Different code can be generated for the same prompt.  
+* **Hallucination:** AI confidently suggests non-existent APIs or libraries, or incorrect logic that doesn't fit the project context.  
+* **Over-Engineering:** It may generate code that is far more complex than required, causing technical debt (a key warning of the [GitClear Report]).  
+
+In short, **AI provides productivity through 'fast code writing,' but it does not guarantee quality in terms of 'accuracy and stability.'** ## 2. TDD: The Safety Mechanism to Turn AI Code into 'Reliable Code'  
+
+TDD is a development practice where test codes are written before the actual implementation. TDD must be combined with AIDD because it perfectly offsets AI's instability.  
+
+---
+
+### A. Serving as a Clear Instruction Manual for AI  
+
+In AIDD, test code isn't just a verification tool; it becomes the **most clear and specific requirement definition** given to the AI.  
+
+* **General Prompt:** "Create a sign-up feature." (Gives AI too much freedom)  
+* **TDD-based Prompt:** (Providing test code) "Implement the `UserService.register` function to pass these test cases." (Gives AI a clear goal)  
+
+This **minimizes the risk of hallucinations** where AI misinterprets requirements or adds unnecessary code.  
+
+---
+
+### B. Maximizing Productivity in the Red-Green-Refactor Cycle  
+
+The TDD cycle of **"Red - Green - Refactor"** becomes innovatively faster when paired with AI.  
+
+1.  **🔴 Red:** The developer writes a **failing test code**. (Human Design)  
+2.  **🟢 Green:** The developer asks the AI to **'write implementation code that passes this test.'** (Maximizing AI Implementation Speed)  
+3.  **🔵 Refactor:** The developer asks the AI to **'refactor the generated implementation code to be cleaner and apply SOLID principles.'** (Human Review & AI-assisted Refactoring)  
+
+This collaborative model combines **human reasoning** with **AI's speed and pattern recognition**, enabling development that captures both **quality and speed** simultaneously.  
+
+---
+
+# Why AIDD is 'Essential' for Vibe Coders and Juniors = Working Like a Senior  
+
+For "Vibe Coders" (those who code by intuition) or junior developers with limited experience, **AI-Driven Development (AIDD)** is more than just a productivity tool; it is a vital growth mechanism that teaches them **"how to work like a senior developer."** Here are three specific reasons why adopting AIDD is beneficial:  
+## Learning the 'Senior Engineer's Mindset'  
+
+The hardest part for junior developers is often not **'how to write code,'** but the decision-making process of **'why it should be written this way.'** * **Instant Feedback Loop:** Vibe coders can ask AI, "Does this code follow **SOLID principles**?" or "Can this function be refactored to be **easier to test**?" and receive immediate feedback.  
+* **Internalizing Patterns and Conventions:** Through tools like Cursor’s `.cursorrules` or Claude Code’s `CLAUDE.md`, juniors can train the AI on team conventions (naming rules, architectural patterns). By analyzing the code generated and reviewed by AI, they can quickly internalize **the coding habits the team values.** The AI acts as a **24/7 code reviewer and mentor.** ## Reducing Anxiety and Accelerating Productivity  
+
+Vibe coders often feel anxious about 'where to start' or 'whether they are creating a critical bug' when implementing new features.  
+
+* **Acquiring TDD Habits:** AIDD encourages TDD. By repeating the experience of writing tests before implementation, juniors develop the habit of focusing on **feature design** rather than just implementation. Since AI handles the implementation (Green) at high speed, the burden of failure is reduced, accelerating development.  
+* **Instant Interpretation of Legacy Code:** When facing cryptic legacy code, they can ask the AI, "What are the primary roles and dependencies of this module?" This allows them to **quickly grasp the context**, mimicking the speed and sequence in which a senior developer analyzes a situation.  
+
+---
+
+## Expanding Full-Stack Capabilities  
+
+Modern development requires various languages and stacks, such as Backend (Python/Java), Frontend (React/TypeScript), and Infrastructure (YAML/Terraform).  
+
+* **Polyglot Code Generation:** When a vibe coder works with a stack outside their primary expertise, AI generates **Idiomatic Code** for that language instantly. For example, a request like **"Convert this React component written in TypeScript to a Svelte component"** allows them to explore and apply new stacks without worrying about syntax errors.  
+* **Time Saving:** They can save time spent digging through documentation for minor syntax or configuration files and focus their energy on the essence of **"problem-solving."** In conclusion, AIDD is establishing itself as the ultimate development methodology and educational environment for juniors—**allowing them to replicate senior knowledge, reduce the anxiety of making mistakes, and experience various stacks at a rapid pace.** # AI Development: If It’s Inevitable, Use It Smarter  
+
+Those who prefer manual coding over full AI development usually have clear reasons:  
+
+1.  Maintainability drops.  
+2.  The structure becomes messy.  
+
+While there are other reasons, these two are the most representative.  
+
+Conversely, if we can solve these two issues, the majority of skeptics might change their minds. Rather than regretting a blind AI adoption, it is better to practice and master various ways to use AI properly.  
+
+Developers unfamiliar with AI Agents should start by getting comfortable with **GitHub Copilot** for partial code generation, then move to the **Gemini CLI**, and eventually expand to tools like **Claude Code**, **Cursor**, or the newly released **AntiGravity**, depending on their needs.  
+
+The era of being a developer with **"just solid basics"** seems to offer less merit now. After all, AI is already becoming better at the "basics."  
+
+---
+
+# References  
+
+* https://onephase.com/en/ai-driven-software-development-speed-efficiency-and-innovation/  
+* https://www.itworld.co.kr/article/3996306/ (LG CNS AI Coding Platform DevOn AIDD)  
+* https://aws.amazon.com/ko/blogs/tech/ai-driven-development-life-cycle/  
+* https://medium.com/effortless-programming/better-ai-driven-development-with-test-driven-development-d4849f67e339  
+* https://dev.to/bain_forge/tdd-and-ai-enabled-engineering-chl  
+* https://www.scribd.com/document/705355560/Coding-on-Copilot-2024-Developer-Research  
+* https://tidyfirst.substack.com/p/the-life-changing-magic-of-tidying  
+* https://medium.com/bgl-tech/what-are-the-solid-design-principles-c61feff33685
