@@ -1,0 +1,260 @@
+---
+title: What I Learned After Writing 30,000 Lines of Code with AI in Just One Month
+categories:
+- AI
+- Dev
+feature_image: "https://velog.velcdn.com/images/playername_ltt/post/b8dcf195-1602-4e61-adfa-a8f33c523433/image.png"
+feature_text: |
+  How to use AI Agent
+---
+
+![](https://velog.velcdn.com/images/playername_ltt/post/b8dcf195-1602-4e61-adfa-a8f33c523433/image.png)
+
+As the title suggests, over the past month or so, I’ve written about 20,000 lines of Spring code and about 10,000 lines of Flutter code.
+
+Obviously, working 8 to 9 hours a day wasn’t nearly enough to write 30,000 lines of code by hand.
+
+So, as a developer with just one year of experience who was tasked with the project’s main features,
+I’d like to share exactly how I used AI and what I learned from the experience.
+
+# What AI tools did you use?
+
+---
+
+![](https://velog.velcdn.com/images/playername_ltt/post/5fe7fd1e-8c77-4862-8eeb-a52b13341fd6/image.png)
+
+These days, everyone is raving about `Claude`. `Claude Code` is rapidly building a reputation so strong that it’s safe to say it’s the best code agent out there.
+
+However, the tools I used were `Gemini CLI` and `Cursor`.
+
+The reason was simple: I received a 6-month free subscription to Gemini Pro, and my company covered the cost of Cursor.
+
+If you’re interested in trying an AI code agent but worried it might not be worth the money, I highly recommend starting with `Gemini CLI`, which offers a generous free quota.
+
+I plan to switch to `Claude Code` once my free trial ends.
+
+# My Development Routine for Collaborating with AI
+
+---
+
+These aren’t actual instructions I’ve given recently, but I’ll share my personal routine using simple examples.
+
+## 1. Setting Up Personas and Defining Scope of Work
+
+---
+
+![](https://velog.velcdn.com/images/playername_ltt/post/05d5b99e-4077-44e6-9e0e-cf38cda9fdc6/image.png)
+
+First, before starting my day’s work, I give the following instructions:
+
+```
+You are a senior-level core backend engineer.
+Today, you are a developer working under my direction to develop <Project Name>.
+
+All work must be carried out under a **well-founded plan** and tested via builds.
+After completing the work, you must compare the before and after results and submit a report in **Korean**.
+
+First, today we plan to develop the <sub-package> of <Project Name>.
+Read through the entire code to understand the server’s tech stack,
+and carefully review the files in the <sub-package> to grasp the business logic.
+```
+
+Other than that, I usually add any additional points I want to emphasize for each task.
+
+The reason I specifically emphasized **Korean** is that this system keeps spitting out English. Even when I set it up like that, it still sometimes speaks in English.
+
+And if I make you read this much code, you might ask, **“Are tokens rotting away?”**, but here’s why it’s okay:
+
+1. When having it read and understand the code, I set it to the `gemini-3-flash-preview` model—a model that doesn’t use many tokens—so it can cache the information.
+Since I switch to the `gemini-3-pro-preview` model during development, reading and processing the cached code uses the Pro model, so the usage is separate.
+2. Because of the cache, this approach rarely results in insufficient tokens unless you’re using it intensively all day long.
+
+Since you’re not leaving all decisions to the AI but rather designing the logic first and then giving the AI specific instructions, you won’t use as many tokens as “vibe coders” do.
+
+## 2. Initial Work Instructions (Basic)
+
+---
+
+No matter how well AI writes code, it’s not easy for it to produce code that’s 100% satisfactory. That’s why I plan to develop a single feature in multiple phases from the start and issue the initial work instructions accordingly.
+
+### Rest API Development Example (Ideal Scenario)
+
+```
+I’ve created a bare-bones shell by simply specifying the endpoint for the “Event Search API” in the <Method> of the <Class>.
+Develop an API that meets the following requirements.
+---
+* Feature Name: Event Search API
+* Search Parameters: Event Name, Organizer, Duration (Start Date/Time, End Date/Time), Event Status Code, Venue Name
+* Response DTO: Event Name, Organizer, Event Date, Event Status Code, Venue Name, Creation Date/Time, Modification Date/Time
+* Detailed Requirements:
+- The domain class for events is “Event”
+- Data must follow the order: “Start Date/Time < Event Date < End Date/Time”
+- For the Event Status Code class, refer to the “EventStatusCode” class
+```
+
+For tasks that are easy to explain clearly in words, convey the requirements by organizing them neatly as shown above.
+
+You can also explain things a bit more broadly there.
+
+Additionally, my tip is that in cases where things are quite complex or where arbitrary modifications would cause problems,
+it’s also acceptable to use an approach like, “Please create a development plan and report it to me. Development must proceed only after my approval.”
+
+### Rest API Development Example (The Despair Edition?)
+
+```
+Design and implement a CRUD API using Event domain objects.
+For a similar example, you can code it to resemble the overall logic of the “NoticeController.”
+Think step-by-step and code it meticulously and correctly.
+```
+
+This approach is also fine. After all, if something is wrong, you can just have them read it and make corrections.
+
+## 3. Second Round of Instructions (Revisions)
+
+---
+
+Except for truly simple CRUD operations, there’s a fairly high chance that the initial result won’t be 100% satisfactory.
+
+I review the initial work to understand the logic flow and provide feedback in the following manner.
+
+### Example of Business Logic Revision (Ideal Scenario)
+
+```
+The following changes need to be made to the work you just completed.
+---
+1. Looking at the validation logic in the getEventList method of the EventService class you just worked on,
+there is an “ALL” value that is used only for queries, even though EventStatusCode is not actually stored in the DB records.
+Please modify the business logic to account for this case.
+
+2. In the `updateEvent` method, to comply with coding conventions, the Domain object is currently created using `@Builder`
+inside the method. Please modify this so that the object is declared in the `EventConverter` class and used from there.
+
+3. (I don’t remember the exact details, but I also sometimes instruct them to modify the code according to the business logic sequence I envisioned.)
+```
+
+Actually, for minor details like point 2, it would be much faster for me to fix them myself while writing the prompt, but I included them as examples.
+
+It is better to read the code, thoroughly understand the development intent, provide counterarguments, and instruct the modification flow as detailed as possible
+(down to the method level, including variables if necessary).
+
+### Example of Business Logic Modification (The Despair Edition)
+
+```
+The search conditions include “ALL.” Please fix this.
+Also, it doesn’t seem like you’re creating and using an `Event` in `updateEvent()`.
+Please come up with an alternative approach and make the necessary changes.
+```
+
+When I’m in a hurry, I sometimes do it this way.
+
+It doesn’t matter how you structure the prompt, but my conclusion is as follows:
+
+> The more difficult and complex the logic, the more detailed and readable your instructions should be.
+>
+
+## 4. Instructions for Finalizing the Work (Cleanup)
+
+---
+
+![](https://velog.velcdn.com/images/playername_ltt/post/39f2ca0b-321a-4835-87c0-541f00400476/image.png)
+
+Recently, while developing overly complex features, I realized that if the code isn’t properly structured, it becomes difficult for the AI to read and evaluate the work it has produced.
+
+Therefore, I now include the following simple prompt as an additional instruction:
+
+```
+Please refactor the code you just developed.
+Work as closely as possible to the SOLID principles and clean code principles.
+Additionally, review the code to see if there are any points where design patterns can be applied.
+Apply design patterns to an appropriate extent.
+```
+
+Or, if I’ve only made minor changes:
+
+```
+The `updateEvent` method you just developed is too fat. (Or, it has too many parameters, so be wary of code smells.)
+Separate the business logic used internally in that method according to its responsibilities.
+```
+
+This maximizes the code’s reusability and maintainability for the future.
+
+Also, once a certain amount of work has been done, I’ll give this instruction again.
+As you continue working, code that can be centralized will inevitably emerge.
+
+Since not only humans but also AI ultimately read the code, you must separate classes and methods according to your intent,
+and be wary of concentrating too many responsibilities in a single class or method.
+
+![](https://velog.velcdn.com/images/playername_ltt/post/418c2b20-bd16-4934-84e2-7825bb013663/image.png)
+
+*As a side note, I recommend the book *Clean Code*. 
+
+*Although the era of humans writing code is coming to an end, this book can be considered the most fundamental guide to software development—one that is also excellent for enhancing the usability of AI.*
+
+## Bonus
+
+---
+
+If you look at the code examples I wrote above, you’ll notice I never once used the phrase “don’t do this.”
+
+As many people know these days, there’s a theory that AI, just like humans, tends to focus more on negative language like “don’t do this.”
+
+After all, people naturally tend to want to do the very things they’re told not to do.
+
+# Meeting with AI
+
+---
+
+![](https://velog.velcdn.com/images/playername_ltt/post/296da557-d712-4c02-9020-6c31af59bc7f/image.png)
+
+Sometimes, it can be daunting to figure out the initial direction for a specific feature.
+
+My personal method for dealing with this is to “hold a meeting with AI” to figure out how to meet the requirements.
+
+### Example
+
+```
+I need to use Redis streams to broadcast the event’s status to other clients and store that data.
+I’m planning to implement this by receiving text messages via WebSocket and handling them in the `handleTextMessage()` method,
+but what’s the best approach?
+
+Also, considering a scale-out scenario,
+I think it would be better to implement the event status update not when a client’s request arrives at `handleTextMessage()`,
+but just before the `BroadcastService` sends the message to other clients for broadcasting.
+What do you think? Are there any other good approaches?
+
+--- Another example
+
+Since state changes occur in an asynchronous, multithreaded environment, is the atomicity of the object
+guaranteed within the `updateEventStatusCode()` method?
+
+--- Another example
+
+We manage Event objects using a `ConcurrentHashMap`,
+and proper memory deallocation is essential for stable operation in a long-term production environment.
+Are there any areas where memory leaks could occur?
+Also, what do you think about periodically cleaning up zombie objects using a batch scheduler to prevent this?
+```
+
+The above are the types of questions I asked during our meeting.
+
+There are a few others, but since meeting with the AI directly is meaningful, I’ll stop here.
+
+# Conclusions from Using the Agent
+
+---
+
+![](https://velog.velcdn.com/images/playername_ltt/post/5bacdc62-9fbc-4abc-807f-3e0747124b94/image.png)
+
+In this day and age, saying you develop without AI is like confessing, “I’m behind the times.”
+
+To use AI effectively, you need to use it a lot, and finding the usage method that’s optimized for you is key.
+
+While it’s great to develop at an explosive pace in a short time using AI like Vibecoder, there are ways to utilize AI that are more suited to developers.
+
+Reviewing business logic, exploring better memory management strategies, making it easier to trace errors when they occur, designing fallback logic… I believe your competitiveness increases when you leverage AI to highlight the unique strengths that only developers possess—differences from tools like Vibecoder.
+
+If you’re not yet familiar with using AI agents, I strongly recommend starting your development journey with `Gemini CLI`, just as I did.
+
+If you have any other tips for using AI, please share them.
+
+Feedback is always welcome :)
