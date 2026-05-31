@@ -2,7 +2,10 @@
 title: 김성진 | Seongjin Kim
 ---
 
+<div id="content-ko" markdown="1">
+
 개발자에서 엔지니어로, 엔지니어에서 리더로.
+
 Backend 엔지니어 김성진입니다.
 
 ## Contacts
@@ -37,7 +40,7 @@ Backend 엔지니어 김성진입니다.
 
 - WebSocket 기반으로 STT → LLM 통역 → TTS로 이어지는 실시간 통번역 파이프라인 개발
 - gemma3, translategemma 모델을 활용한 통번역 에이전트 개발 및 운영
-- 언어별 “통역 → TTS” 파이프라인을 비동기 구조로 고도화하여 실시간성 개선
+- 언어별 "통역 → TTS" 파이프라인을 비동기 구조로 고도화하여 실시간성 개선
 - 구/절 단위 누적 번역과 문장별 분리 보정 로직을 언어별로 병렬 처리하도록 설계
 - TTS Stream API 방식의 병렬 호출 구조를 설계하고, 통역 결과 품질 유지를 위한 순서 보장 로직 개발
 
@@ -75,7 +78,7 @@ Backend 엔지니어 김성진입니다.
 - Quasar Framework 기반 공통 컴포넌트 분리를 통해 유지보수성과 확장성 확보
 - 기존 개발사의 리소스를 분석하고 리뉴얼 개발 수행
 - 기존 DB 스키마를 유지하면서 복합 조건 기반 API 및 쿼리 개발
-- 서울랜드 어트랙션 예약 서비스 ‘루나패스’ 관리 API 개발
+- 서울랜드 어트랙션 예약 서비스 '루나패스' 관리 API 개발
 
 #### ● 서울랜드 앱 'Bloom' 숏폼 백엔드 개발
 
@@ -148,7 +151,6 @@ Backend 엔지니어 김성진입니다.
 - **Skill**: Java, Spring Boot, JPA, QueryDSL, MySQL, RabbitMQ, Firebase FCM, AWS S3, Kakao OAuth, JWT, Docker
 - 물건을 빌려주고 빌릴 수 있는 물품 대여 중개 플랫폼 API 서버
 - 대여 게시물 CRUD 및 검색 기능 개발
-- RabbitMQ 기반 채팅 기능 개발
 - Firebase FCM 기반 푸시 알림 개발
 - Kakao OAuth 소셜 로그인 개발
 
@@ -173,6 +175,243 @@ Backend 엔지니어 김성진입니다.
 
 {% include button.html text="GitHub" icon="github" link="https://github.com/2024Clover-website/Clover-Client" color="#000000" %}
 
-- **Skill**: React, CSS Modules, Node.js, Nginx, AWS Elastic Beanstalk
+- **Skill**: React, CSS Modules, Node.js, AWS Elastic Beanstalk
 - Web Media API를 이용한 음성파일 제어 기능 개발
 - 프로젝트 구조 설계
+
+</div>
+
+<div id="content-en" markdown="1" style="display:none">
+
+From developer to engineer, from engineer to leader.
+
+I'm Seongjin Kim, a Backend Engineer.
+
+## Contacts
+
+- Email: sjinkim000625@gmail.com
+- Birth: 2000.06.25
+
+{% include button.html text="Github" icon="github" link="https://github.com/ksj000625" color="#000000" %} {% include button.html text="LinkedIn" icon="linkedin" link="https://www.linkedin.com/in/seongjin-kim-92743b333" color="#0077b5" %} {% include button.html text="velog" link="https://velog.io/@playername_ltt" color="#20C997" %}
+
+---
+
+## Introduce
+
+- An engineer who always focuses on finding optimal solutions to problems.
+- Beyond simple feature implementation, I solve problems encountered during development through **technology decisions aligned with the organization**.
+- An engineer who sets no limits and understands the essence of problem-solving without being swept up by trends.
+
+---
+
+## Work Experience
+
+### Arom Information Technology | Backend Engineer, 2024.08 -
+
+- Department: AI Research Lab (formerly Corporate Research Lab)
+- **Skill**: Spring Boot, FastAPI, HuggingFace, MySQL, MyBatis, JPA, QueryDSL, Redis Streams, Redis Pub/Sub, Vue.js, Quasar Framework, Flutter, NCloud
+- Projects:
+  - MICE AI - Real-time AI interpretation service for international conferences
+  - AromSR - Personal real-time interpretation service
+  - Seoul Land App Admin Page
+
+#### ● Real-time AI Interpretation Service Backend Development
+
+- Developed a real-time translation pipeline based on WebSocket: STT → LLM Translation → TTS
+- Developed and operated translation agents using gemma3 and translategemma models
+- Improved real-time performance by upgrading the per-language "translation → TTS" pipeline to an asynchronous architecture
+- Designed phrase/clause-level cumulative translation and per-sentence correction logic to run in parallel per language
+- Designed parallel TTS Stream API call structure and developed order-guarantee logic to maintain interpretation quality
+
+#### ● LLM Translation Quality and Latency Improvement
+
+- Existing translation had issues with speed degradation, poor context understanding, and unnecessary text output
+- Improved by separating system prompt from user input and normalizing previous context, moving away from the persona/few-shot-heavy prompt structure
+- Improved translation quality by removing unnecessary few-shots and strengthening detailed guidelines for real-time interpretation
+- Adopted translategemma-12b-it model based on faster inference time and lower GPU resource usage compared to gemma-3-27b-it
+- Validated translation quality based on COMET Score before finalizing the model change
+- Average translation speed improved from 1.2s to 0.6s: **average 50% improvement**
+- COMET Score improved from 0.75 to 0.82: approximately **8.6% improvement, successfully producing natural translation results**
+
+#### ● Redis-based Real-time Broadcasting Architecture
+
+- Developed Redis-based broadcasting logic to ensure reliable reception of conference data in scale-out environments
+- Managed participant sessions per seminar session with RBAC-based role-specific data broadcasting
+- Stored translation results and source text in Redis Streams for script generation
+- Processed TTS data via Redis Pub/Sub considering its volatile nature
+- Separated real-time messaging and caching structures to design storage strategies matching each data type
+
+#### ● Backend Architecture and Resource Efficiency Optimization
+
+- Thread Per Request model caused memory occupation issues in external I/O blocking sections such as LLM API calls and TTS synthesis
+- Introduced Java Virtual Thread to improve resource efficiency in blocking I/O sections
+- Implemented a Context Cleanup interceptor to prevent memory leaks
+- Real-time resource recovery from abnormally terminated WebSocket sessions to maintain system availability
+- Designed and automated Lifecycle management logic to prevent memory leaks from residual ThreadLocal and async tasks upon WebSocket session termination
+
+#### ● Seoul Land App Admin Service Development
+
+- Developed backend APIs and frontend features for the Seoul Land app admin web service
+- Built a function-centric admin web focused on service maintenance UX
+- Ensured maintainability and extensibility by extracting common components with Quasar Framework
+- Analyzed the legacy developer's resources and performed renewal development
+- Developed compound condition-based APIs and queries while preserving the existing DB schema
+- Developed management APIs for 'LunaPass', Seoul Land's attraction reservation service
+
+#### ● Seoul Land App 'Bloom' Short-form Backend Development
+
+- Developed async video upload server using Spring Webflux and Vimeo API
+- Developed webhook functionality triggered on upload completion
+- Designed and developed short-form content table and APIs
+- Secondary development of user profile features
+
+---
+
+## License
+
+- **Engineer Information Processing** |
+  Human Resources Development Service of Korea, 2025.09.12
+- **SW Development_L5_LV20** |
+  Human Resources Development Service of Korea, 2025.02.27
+- **Network Administrator Level 2** |
+  Korea Information & Communication Qualification Association, 2022.04.12
+
+---
+
+## Awards
+
+- Encouragement Award, Myongji University Capstone Design Competition / 2024.06
+
+---
+
+## Education
+
+#### Myongji University / Computer Engineering, B.S. (2019.03 ~ 2025.02)
+
+- GPA: 3.56 / 4.5
+- Location: Yongin, Gyeonggi-do
+
+---
+
+## Activity
+
+#### AI Service Engineering Track 6th / Sparta Club Employed Bootcamp (2025.11 ~ 2026.02)
+
+- Outstanding Completion Team
+- Enhanced practical skills in AI service development and engineering
+- Practiced LLM-based service design, operation, and improvement
+
+---
+
+## Side Projects
+
+### Monix | Full Development + Agent Feature Extension
+
+**2025, CMUX x AIM Intelligence Hackathon, Developer tooling track**
+
+{% include button.html text="GitHub" icon="github" link="https://github.com/co-tox/monix" color="#000000" %}
+
+- **Skill**: Python, Google Gemini, OpenAI Codex, MCP (Model Context Protocol)
+- A terminal-native AI assistant combining slash command CLI with an LLM conversational agent for server monitoring
+- Real-time monitoring of CPU, memory, disk, processes, and service logs
+- Natural language-based server monitoring configuration and control
+- Discord / Slack webhook alert integration
+- MCP server integration support
+
+---
+
+### BillBill | Backend Development
+
+**2025, Side Project**
+
+{% include button.html text="GitHub" icon="github" link="https://github.com/billbill-project/bill-api-server" color="#000000" %}
+
+- **Skill**: Java, Spring Boot, JPA, QueryDSL, MySQL, RabbitMQ, Firebase FCM, AWS S3, Kakao OAuth, JWT, Docker
+- API server for a peer-to-peer item lending and borrowing platform
+- Developed borrow post CRUD and search features
+- Developed Firebase FCM push notification features
+- Developed Kakao OAuth social login
+
+---
+
+### ARY - All Review Young | Backend Development
+
+**2024, Capstone Design Project**
+
+{% include button.html text="GitHub" icon="github" link="https://github.com/Foolish-Bros/ARY-Server" color="#000000" %}
+
+- **Skill**: Java, Spring Boot, JWT, Spring Security, OAuth2 (Google / Kakao / Naver), JPA, AWS Elastic Beanstalk
+- Chatbot Q&A service based on online shopping mall reviews
+- Developed Jsoup-based web crawling
+- Developed Google / Kakao / Naver OAuth2 social login
+
+---
+
+### Clover | Frontend Development
+
+**2023, Audience-participatory web service for a Visual Design Department exhibition**
+
+{% include button.html text="GitHub" icon="github" link="https://github.com/2024Clover-website/Clover-Client" color="#000000" %}
+
+- **Skill**: React, CSS Modules, Node.js, AWS Elastic Beanstalk
+- Developed audio file control features using Web Media API
+- Designed project architecture
+
+</div>
+
+<style>
+.item--lang-switch {
+  display: inline-flex !important;
+  align-items: center;
+  vertical-align: middle;
+  margin-right: .3rem;
+}
+.lang-switch {
+  display: inline-flex;
+  border: 1.5px solid #05bf85;
+  border-radius: 20px;
+  padding: 2px;
+}
+.lang-btn {
+  padding: 3px 10px;
+  border: none;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 16px;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 0;
+}
+.lang-btn.active {
+  background: #05bf85;
+  color: #fff;
+}
+.lang-btn:hover:not(.active) {
+  background: rgba(5, 191, 133, 0.12);
+  color: #000;
+}
+</style>
+
+<script>
+function setLang(lang) {
+  document.getElementById('content-ko').style.display = lang === 'ko' ? '' : 'none';
+  document.getElementById('content-en').style.display = lang === 'en' ? '' : 'none';
+  document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  try { localStorage.setItem('preferred-lang', lang); } catch(e) {}
+}
+
+(function() {
+  var saved;
+  try { saved = localStorage.getItem('preferred-lang'); } catch(e) {}
+  if (saved === 'en') {
+    setLang('en');
+  } else if (!saved && navigator.language && !navigator.language.startsWith('ko')) {
+    setLang('en');
+  }
+})();
+</script>

@@ -1,6 +1,14 @@
 {% if site.navigation_header %}
 <nav class="nav  nav--header">
   <ul class="list  list--nav">
+    {% if page.url == '/' %}
+    <li class="item  item--lang-switch">
+      <div class="lang-switch">
+        <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">한국어</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+      </div>
+    </li>
+    {% endif %}
     {% for item in site.navigation_header %}
 
       {% if item.url contains '://' %}
