@@ -119,3 +119,60 @@ Backend 엔지니어 김성진입니다.
 - 최우수 수료팀
 - AI 서비스 개발 및 엔지니어링 실무 역량 강화
 - LLM 기반 서비스 설계, 운영, 개선 관점의 실습 수행
+
+---
+
+## Side Projects
+
+### Monix | 전체적인 개발 + 에이전트 기능 확장
+
+**2025년, CMUX x AIM Intelligence Hackathon, Developer tooling track**
+
+{% include button.html text="GitHub" icon="github" link="https://github.com/co-tox/monix" color="#000000" %}
+
+- **Skill**: Python, Google Gemini, OpenAI Codex, MCP (Model Context Protocol)
+- 터미널 네이티브 AI 어시스턴트로, 슬래시 명령어 CLI와 LLM 대화형 에이전트를 결합한 서버 모니터링 도구
+- CPU, 메모리, 디스크, 프로세스, 서비스 로그 등 실시간 모니터링
+- 자연어 기반 서버 모니터링 설정 및 제어
+- Discord / Slack 웹훅 알림 연동
+- MCP 서버 연동 지원
+
+---
+
+### BillBill | 백엔드 개발
+
+**2025년, 사이드 프로젝트**
+
+{% include button.html text="GitHub" icon="github" link="https://github.com/billbill-project/bill-api-server" color="#000000" %}
+
+- **Skill**: Java, Spring Boot, JPA, QueryDSL, MySQL, RabbitMQ, Firebase FCM, AWS S3, Kakao OAuth, JWT, Docker
+- 물건을 빌려주고 빌릴 수 있는 물품 대여 중개 플랫폼 API 서버
+- 대여 게시물 CRUD 및 검색 기능 개발
+- RabbitMQ 기반 채팅 기능 개발
+- Firebase FCM 기반 푸시 알림 개발
+- Kakao OAuth 소셜 로그인 개발
+
+---
+
+### ARY - All Review Young | 백엔드 개발
+
+**2024년, 캡스톤 디자인 프로젝트**
+
+{% include button.html text="GitHub" icon="github" link="https://github.com/Foolish-Bros/ARY-Server" color="#000000" %}
+
+- **Skill**: Java, Spring Boot, JWT, Spring Security, OAuth2 (Google / Kakao / Naver), JPA, AWS Elastic Beanstalk
+- 온라인 쇼핑몰 리뷰 기반 챗봇 Q&A 서비스
+- Jsoup 기반 웹 크롤링 기능 개발
+- Google / Kakao / Naver OAuth2 소셜 로그인 개발
+
+---
+
+### Clover | 프론트엔드 개발
+
+**2023년, 시각디자인학과 전시회를 위한 관객참여형 웹 서비스**
+
+{% include button.html text="GitHub" icon="github" link="https://github.com/2024Clover-website/Clover-Client" color="#000000" %}
+
+- **Skill**: React, CSS Modules, Node.js, Nginx, AWS Elastic Beanstalk
+- Web Media API를 이용한 음성파일 제어 기능 개발
+- 프로젝트 구조 설계
