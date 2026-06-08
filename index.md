@@ -131,7 +131,7 @@ Backend 엔지니어 김성진입니다.
 
 **2025년, CMUX x AIM Intelligence Hackathon, Developer tooling track**
 
-{% include button.html text="GitHub" icon="github" link="https://github.com/co-tox/monix" color="#000000" %}
+{% include button.html text="GitHub" icon="github" link="https://github.com/co-tox/monix" color="#000000" %} {% include button.html text="PyPI" link="https://pypi.org/project/monix/" color="#3776AB" %}
 
 - **Skill**: Python, Google Gemini, OpenAI Codex, MCP (Model Context Protocol)
 - 터미널 네이티브 AI 어시스턴트로, 슬래시 명령어 CLI와 LLM 대화형 에이전트를 결합한 서버 모니터링 도구
@@ -309,7 +309,7 @@ I'm Seongjin Kim, a Backend Engineer.
 
 **2025, CMUX x AIM Intelligence Hackathon, Developer tooling track**
 
-{% include button.html text="GitHub" icon="github" link="https://github.com/co-tox/monix" color="#000000" %}
+{% include button.html text="GitHub" icon="github" link="https://github.com/co-tox/monix" color="#000000" %} {% include button.html text="PyPI" link="https://pypi.org/project/monix/" color="#3776AB" %}
 
 - **Skill**: Python, Google Gemini, OpenAI Codex, MCP (Model Context Protocol)
 - A terminal-native AI assistant combining slash command CLI with an LLM conversational agent for server monitoring
